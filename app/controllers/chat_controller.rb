@@ -32,7 +32,10 @@ class ChatController < ApplicationController
       msg = Chats.new({:text => params[:text], :project => @project, :user => user, :time => DateTime.now })
       msg.save
     end
-    redirect_to :action=>'list' 
+    respond_to do |format|
+      format.js { render json: 'OK' }
+      format.html { redirect_to :action=>'list' }
+    end
     
   end
 end
