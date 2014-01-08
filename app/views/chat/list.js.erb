@@ -1,6 +1,7 @@
 var html = "<%= j render :partial => 'chat/message', collection: @chats %>";
-$('#chat-plugin-messages').empty().append(html);
+$('#chat-plugin-messages').append(html);
 $.ajax({
+    contentType:"application/octet-stream",
     method:"GET",
     data: {last: $("#chat-plugin-messages > div:first").data('messageid')},
     url: "<%= url_for :controller => 'chat', :action => 'list', :project => @project %>"
