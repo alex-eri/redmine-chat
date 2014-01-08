@@ -33,7 +33,7 @@ class ChatController < ApplicationController
       msg.save
     end
     respond_to do |format|
-      format.js { render json: '"OK"', :content_type => 'application/json' }
+      format.js { render json: '{"status":"OK"}', :content_type => 'application/json' }
       format.html { redirect_to :action=>'list' }
     end
     

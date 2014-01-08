@@ -13,14 +13,6 @@ src="<%= url_for :controller => 'chat', :action => 'list', :project => @project 
   function chat_new_success (r) {
           $("#chat-plugin-form input[name=text]").val('');
           $('#ajax-indicator').hide();
-      alert(
-              'Ajax \n' +
-                      '\n readyState: ' + r.readyState +
-                      '\n responseText: ' + r.responseText +
-                      '\n status: ' + r.status +
-                      '\n statusText: ' + r.statusText
-      );
-      console.log(r);
   }
 
   $("#chat-plugin-form").submit(function(e){
@@ -29,8 +21,8 @@ src="<%= url_for :controller => 'chat', :action => 'list', :project => @project 
           data: $("#chat-plugin-form").serialize(),
           dataType: 'application/json',
           url: "<%= url_for :controller => 'chat', :action => 'list', :project => @project %>",
-          success: chat_new_success,
-          error: chat_new_success
+          success: chat_new_success//,
+//          error: chat_new_success
       });
       e.preventDefault();
       return false;
