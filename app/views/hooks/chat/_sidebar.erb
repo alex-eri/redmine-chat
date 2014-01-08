@@ -14,6 +14,7 @@ src="<%= url_for :controller => 'chat', :action => 'list', :project => @project 
       $.ajax({
           type:"POST",
           data: $("#chat-plugin-form").serialize(),
+          dataType: 'application/json',
           url: "<%= url_for :controller => 'chat', :action => 'list', :project => @project %>",
           success: function(d){
               $("#chat-plugin-form input[name=text]").val('');
