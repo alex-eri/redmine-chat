@@ -12,11 +12,11 @@ src="<%= url_for :controller => 'chat', :action => 'list', :project => @project 
 <script type="application/javascript">
   $("#chat-plugin-form").submit(function(e){
       $.ajax({
-          contentType:"application/octet-stream",
           type:"POST",
           data: $("#chat-plugin-form").serialize(),
           url: "<%= url_for :controller => 'chat', :action => 'list', :project => @project %>"
       });
+      $('#ajax-indicator').hide();
       e.preventDefault();
       return false;
   });
