@@ -1,5 +1,5 @@
 var html = "<%= j render :partial => 'chat/message', collection: @chats %>";
-$('#chat-plugin-messages').append(html);
+$('#chat-plugin-messages').prepend(html);
 $.ajax({
     contentType:"application/octet-stream",
     method:"GET",
