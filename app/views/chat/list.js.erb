@@ -1,4 +1,4 @@
-var html = "<%= render :partial => 'chat/message', collection: @chats %>";
+var html = "<%= j render :partial => 'chat/message', collection: @chats %>";
 $('#chat-plugin-messages').empty().append(html);
 $.ajax({
     method:"GET",
