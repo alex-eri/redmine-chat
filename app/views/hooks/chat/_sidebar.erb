@@ -15,7 +15,9 @@ src="<%= url_for :controller => 'chat', :action => 'list', :project => @project 
           type:"POST",
           data: $("#chat-plugin-form").serialize(),
           url: "<%= url_for :controller => 'chat', :action => 'list', :project => @project %>"
-      });
+      }).success(function(d){
+                  $("#chat-plugin-form input[name=text]").val('');
+              });
       $('#ajax-indicator').hide();
       e.preventDefault();
       return false;
