@@ -2,6 +2,6 @@ var html = "<%= j render :partial => 'chat/message', collection: @chats %>";
 $('#chat-plugin-messages').empty().append(html);
 $.ajax({
     method:"GET",
-    data: {last: $("#chat-plugin-messages").firstChild().data('messageid')},
+    data: {last: $("#chat-plugin-messages > div:first").data('messageid')},
     url: "<%= url_for :controller => 'chat', :action => 'list', :project => @project %>"
 });
