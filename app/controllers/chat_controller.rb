@@ -6,7 +6,7 @@ class ChatController < ApplicationController
     @project = Project.find(params[:project])
     if params[:last]
       c = 0
-      while c < 5
+      while c < 15
         c += 1
         @chats = Chats.where(["id > ?", params[:last] ]).where(["project_id = ?", @project.id ]).find(:all, :include => :user, :order => "time DESC", :limit => 15)
         if @chats.length != 0
