@@ -10,7 +10,8 @@ action="<%= url_for :controller => 'chat', :action => 'list', :project => @proje
 src="<%= url_for :controller => 'chat', :action => 'list', :project => @project %>">
 </iframe>
 <script type="application/javascript">
-  $('#chat-plugin-messages').outerHTML('<div id=chat-plugin-messages >&nbsp;</div>')
+  $('#chat-plugin-messages').remove();
+  $('#chat-plugin').append('<div id=chat-plugin-messages >&nbsp;</div>');
     $.ajax({
         url: "<%= url_for :controller => 'chat', :action => 'list', :project => @project %>"
     });
