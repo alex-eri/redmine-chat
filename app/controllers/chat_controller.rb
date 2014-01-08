@@ -5,7 +5,15 @@ class ChatController < ApplicationController
     puts params
     @project = Project.find(params[:project])
     if params[:last]
-      @chats = Chats.where(["id > ?", params[:last] ]).where(["project_id = ?", @project.id ]).find(:all, :include => :user, :order => "time DESC", :limit => 15)
+      c = 0
+      while c < 20
+        c += 1
+        @chats = Chats.where(["id > ?", params[:last] ]).where(["project_id = ?", @project.id ]).find(:all, :include => :user, :order => "time DESC", :limit => 15)
+        if @chats.length != 0
+          break
+        end
+        sleep 1
+      end
     else
       @chats = Chats.where(["project_id = ?", @project.id ]).find(:all, :include => :user, :order => "time DESC", :limit => 15)
     end
