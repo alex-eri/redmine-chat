@@ -6,8 +6,9 @@ class ChatController < ApplicationController
     @project = Project.find(params[:project])
     if params[:last]
       @chats = Chats.where(["id > ?", params[:last] ]).where(["project_id = ?", @project.id ]).find(:all, :include => :user, :order => "time DESC", :limit => 15)
+    else
+      @chats = Chats.where(["project_id = ?", @project.id ]).find(:all, :include => :user, :order => "time DESC", :limit => 15)
     end
-    @chats = Chats.where(["project_id = ?", @project.id ]).find(:all, :include => :user, :order => "time DESC", :limit => 15)
     respond_to do |format|
       format.js
       format.html {render :layout => nil}
