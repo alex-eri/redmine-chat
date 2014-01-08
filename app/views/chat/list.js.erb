@@ -1,1 +1,2 @@
-$('#chat-plugin-messages').outerHTML("<%= render :partial => 'chat/list.html' %>");
+var html = "<%= render :partial => 'chat/message', collection: @chats %>"
+$('#chat-plugin-messages').empty.append(html);
